@@ -79,7 +79,7 @@ struct binary *root;
 root=create();
 printf("\nThe inorder traversal is........\n");
 inorder(root);
-printf("\nThe inorder traversal is........\n");
+printf("\nThe preorder traversal is........\n");
 preorder(root);
 printf("\nThe postorder traversal is........\n");
 postorder(root);
