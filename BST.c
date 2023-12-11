@@ -85,27 +85,6 @@ inorder(tree->rchild);
 }
 }
 
-void preorder(struct binary *tree)
-{
-if(tree!=NULL)
-{
-
-printf("%d\t",tree->data);
-preorder(tree->lchild);
-preorder(tree->rchild);
-}
-}
-
-void postorder(struct binary *tree)
-{
-if(tree!=NULL)
-{
-postorder(tree->lchild);
-postorder(tree->rchild);
-printf("%d\t",tree->data);
-
-}
-}
 
 int main()
 {
@@ -117,7 +96,6 @@ inorder(root);
 
 return 0;
 }
-
 
 
 
