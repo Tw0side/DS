@@ -1,0 +1,132 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct binary
+{
+int data;
+struct binary *rchild,*lchild;
+};
+
+
+
+struct binary* create()
+{
+
+struct binary *r=NULL,*new,*ptr,*parent;
+int flag=0;
+
+
+char ch;
+int item;
+do
+{
+printf("\nEnter the item /enter 0 for exit\n");
+scanf("%d",&item);
+
+if(r==NULL)
+{
+
+new=(struct binary*)malloc(sizeof(struct binary*));
+new->data=item;
+new->lchild=NULL;
+new->rchild=NULL;
+r=new;
+}
+else 
+{
+ptr=r;
+
+while(ptr!=NULL&&flag==0)
+{
+if(ptr->data==item)
+{
+flag=1;
+printf("\ninsert The Item \n");
+break;
+}
+else if(item<ptr->data)
+{
+parent=ptr;
+ptr=ptr->lchild;
+}
+else
+{
+parent=ptr;
+ptr=ptr->rchild;
+}
+if(ptr==NULL)
+{
+new=(struct binary*)malloc(sizeof(struct binary*));
+new->data=item;
+new->lchild=NULL;
+new->rchild==NULL;
+if(parent->data<item)
+{
+parent->rchild=new;
+}
+else
+{
+parent->lchild=new;
+}
+}
+}
+}
+}while(item!=0);
+
+printf("\nEnter the item to be searched\n");
+int key;
+scanf("%d",&key);
+do
+{
+ptr=r;
+
+while(ptr!=NULL&&flag==0)
+{
+if(ptr->data==key)
+{
+flag==1;
+break;
+}
+}
+if(flag==1)
+{
+printf("\nThe item is present");
+break;
+}
+else
+{
+printf("\nThe item is not present\n");
+}
+}while(ptr!=NULL);
+
+
+
+
+return r;
+}
+
+void inorder(struct binary *tree)
+{
+if(tree!=NULL)
+{
+inorder(tree->lchild);
+printf("%d\t",tree->data);
+inorder(tree->rchild);
+}
+}
+
+
+int main()
+{
+struct binary *root;
+
+root=create();
+printf("\nThe inorder traversal is........\n");
+inorder(root);
+
+return 0;
+}
+
+
+
+
