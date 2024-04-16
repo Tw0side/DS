@@ -11,7 +11,7 @@ int main()
 {
  int i,n;
  int totwtime=0,totttime=0;
- printf("\n......FCFS Scheduling......\n");
+ printf("\nFCFS Scheduling\n");
  printf("enter the number of process: ");
  scanf("%d",&n);
  for(i=0;i<n;i++)
