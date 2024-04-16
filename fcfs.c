@@ -17,6 +17,8 @@ int main()
  for(i=0;i<n;i++)
  {
   p[i].pid=1;
+  printf("enter the process id :");
+  scanf("%d",&p[i].pid);
   printf("enter the burst time of the process\n");
   scanf("%d",&p[i].btime);
  }
