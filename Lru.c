@@ -1,69 +1,156 @@
+#include<stdlib.h>
+
 #include<stdio.h>
 
-int main()
+#define max 100
+
+#define min 10
+
+int ref[max],count,frame[min],n;
+
+void input()
 
 {
 
-int i,j,n,a[50],frame[10],no,k,avail,count=0;
+int i,temp;
 
-printf("\n enter the number of pages:\n");
+count=0;
+
+printf("\n\n\tEnter the number of page frames : ");
 
 scanf("%d",&n);
 
-printf("\n enter the page number:\n");
+printf("\n\n\tEnter the reference string (-1 for end) : ");
 
-for(i=1;i<=n;i++)
+scanf("%d",&temp);
 
-scanf("%d",&a[i]);
-
-printf("\n enter the number of frames:\n");
-
-scanf("%d",&no);
-
-for(i=0;i<no;i++)
-
-frame[i]=-1;
-
-j=0;
-
-printf("\tref string\t page frmaes\n");
-
-for(i=1;i<=n;i++)
+while(temp != -1)
 
 {
 
-printf("%d\t\t",a[i]);
+ref[count++]=temp;
 
-avail=0;
-
-for(k=0;k<no;k++)
-
-if(frame[k]==a[i])
-
-avail=1;
-
-if(avail==0)
-
-{ frame[j]=a[i];
-
-j=(j+1)%no;
-
-count++;
-
-for(k=0;k<no;k++)
-
-printf("%d\t",frame[k]);
+scanf("%d",&temp);
 
 }
 
-printf("\n");
+}
+
+void LRU()
+
+{
+  int i,j,k,stack[min],top=0,fault=0;
+
+system("CLS");
+
+for(i=0;i<count;i++)
+
+{
+
+if(top<n)
+
+stack[top++]=ref[i],fault++;
+
+else
+
+{
+
+for(j=0;j<n;j++)
+
+if(stack[j]==ref[i])
+
+break;
+
+if(j<n)
+
+{
+
+for(k=j;k<n-1;k++)
+  
+stack[k]=stack[k+1];
+
+stack[k]=ref[i];
 
 }
 
-printf("page fault is %d",count);
+else
 
-getch();
+{
 
-return 0;
+for(k=0;k<n-1;k++)
+
+stack[k]=stack[k+1];
+
+stack[k]=ref[i];
+
+fault++;
 
 }
+
+}
+
+printf("\n\nAfter inserting %d the stack status is : ",ref[i]);
+
+for(j=0;j<top;j++)
+
+printf("%d ",stack[j]);
+
+}
+
+printf("\n\n\tEnd to inserting the reference string.");
+
+printf("\n\n\tTotal page fault is %d.",fault);
+
+printf("\n\n\tPress any key to continue.");
+
+}
+
+void main()
+
+{
+
+int x;
+
+//freopen("in.cpp","r",stdin);
+
+while(1)
+
+{
+
+printf("\n\n\t-----MENU---- ");
+
+printf("\n\t1. Input ");
+
+printf("\n\t2. LRU (Least Recently Used) Algorithm");
+
+printf("\n\t0. Exit.");
+
+printf("\n\n\tEnter your choice.");
+
+scanf("%d",&x);
+
+switch(x)
+
+{
+
+case 1:
+
+input();
+break;
+
+case 2:
+
+LRU();
+
+break;
+
+case 0:
+
+exit(0);
+
+}
+
+}
+
+}
+
