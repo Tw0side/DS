@@ -31,7 +31,6 @@ printf("%d\t",frame[k]);
 printf("\n");
 }
 printf("page fault is %d",count);
-getch();
 return 0;
 }
 
