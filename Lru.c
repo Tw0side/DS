@@ -1,3 +1,4 @@
+//Author :Santo cyriac
 #include<stdlib.h>
 
 #include<stdio.h>
